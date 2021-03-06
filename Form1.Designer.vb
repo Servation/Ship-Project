@@ -25,6 +25,7 @@ Partial Class Form1
         Me.components = New System.ComponentModel.Container()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'Timer1
@@ -33,7 +34,10 @@ Partial Class Form1
         '
         'Timer2
         '
-        Me.Timer2.Interval = 50
+        '
+        'Timer3
+        '
+        Me.Timer3.Interval = 5
         '
         'Form1
         '
@@ -49,4 +53,5 @@ Partial Class Form1
 
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Timer2 As Timer
+    Friend WithEvents Timer3 As Timer
 End Class
