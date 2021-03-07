@@ -1,6 +1,7 @@
-﻿Public Class Ship
+﻿Public Class Asteroid
     Inherits PictureBox
     Private TopSpeed, LeftSpeed As Double
+    Private AsteroSize As Integer
 
     Public Property UpDown As Double
         Get
@@ -19,14 +20,20 @@
         End Set
     End Property
 
+    Public Sub randSize()
+        Dim Gen As Random = New Random()
+        AsteroSize = Gen.Next(35, 75)
+    End Sub
+
     Public Sub New()
         MyBase.New()
-        Me.BackColor = Color.Green
-        Me.Width = 30
-        Me.Height = 30
-        Me.Top = 370
-        Me.Left = 370
-        TopSpeed = 0
+        randSize()
+        Me.BackColor = Color.Black
+        Me.Width = AsteroSize
+        Me.Height = AsteroSize
+        Me.Top = 0
+        Me.Left = 60
+        TopSpeed = 5
         LeftSpeed = 0
     End Sub
 
