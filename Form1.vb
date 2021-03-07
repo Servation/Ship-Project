@@ -40,20 +40,26 @@
         'Up = yMouse
 
         If ship.Left <= 0 Then
-            ship.LeftRight = 1
+            ship.Left = 0
+            ship.LeftRight = -ship.LeftRight
         ElseIf ship.Left >= Me.Width - 45 Then
-            ship.LeftRight = -1
+            ship.Left = Me.Width - 45
+            ship.LeftRight = -ship.LeftRight
         End If
         If ship.Top <= 0 Then
-            ship.UpDown = 1
+            ship.Top = 0
+            ship.UpDown = -ship.UpDown
         ElseIf ship.Top >= Me.Height - (ship.Height * 2 + 10) Then
-            ship.UpDown = -1
+            ship.Top = Me.Height - (ship.Height * 2 + 10)
+            ship.UpDown = -ship.UpDown
         End If
 
         If ast.Top <= 0 Then
-            ast.UpDown = 1
+            ast.Top = 0
+            ast.UpDown = -ast.UpDown
         ElseIf ast.Top >= Me.Height - (ship.Height * 2 + 10) Then
-            ast.UpDown = -1
+            ast.Top = Me.Height - (ship.Height * 2 + 10)
+            ast.UpDown = -ast.UpDown
         End If
 
         ast.Top += ast.UpDown
