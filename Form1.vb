@@ -4,27 +4,7 @@
     Private keysPressed As New HashSet(Of Keys)
     Private Sub form1_keydown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         keysPressed.Add(e.KeyCode)
-        If ship.LeftRight >= -6 And ship.UpDown >= -6 And keysPressed.Contains(Keys.A) AndAlso keysPressed.Contains(Keys.W) Then
-            ship.UpDown -= 2
-            ship.UpDown -= 2
-        ElseIf ship.LeftRight >= -6 And ship.UpDown <= 6 And keysPressed.Contains(Keys.A) AndAlso keysPressed.Contains(Keys.S) Then
-            ship.LeftRight -= 2
-            ship.UpDown += 2
-        ElseIf ship.LeftRight <= 6 And ship.UpDown >= -6 And keysPressed.Contains(Keys.D) AndAlso keysPressed.Contains(Keys.W) Then
-            ship.LeftRight += 2
-            ship.UpDown -= 2
-        ElseIf ship.LeftRight <= 6 And ship.UpDown <= 6 And keysPressed.Contains(Keys.D) AndAlso keysPressed.Contains(Keys.S) Then
-            ship.LeftRight += 2
-            ship.UpDown += 2
-        ElseIf ship.LeftRight >= -6 And keysPressed.Contains(Keys.A) Then
-            ship.LeftRight -= 2
-        ElseIf ship.LeftRight <= 6 And keysPressed.Contains(Keys.D) Then
-            ship.LeftRight += 2
-        ElseIf ship.UpDown >= -6 And keysPressed.Contains(Keys.W) Then
-            ship.UpDown -= 2
-        ElseIf ship.UpDown <= 6 And keysPressed.Contains(Keys.S) Then
-            ship.UpDown += 2
-        End If
+
 
 
 
@@ -39,17 +19,48 @@
         'L = xMouse
         'Up = yMouse
 
+        If ship.LeftRight >= -6 And keysPressed.Contains(Keys.A) Then
+            ship.LeftRight -= 2
+        End If
+        If ship.LeftRight <= 6 And keysPressed.Contains(Keys.D) Then
+            ship.LeftRight += 2
+        End If
+        If ship.UpDown >= -6 And keysPressed.Contains(Keys.W) Then
+            ship.UpDown -= 2
+        End If
+        If ship.UpDown <= 6 And keysPressed.Contains(Keys.S) Then
+            ship.UpDown += 2
+        End If
+        If ship.LeftRight >= -3 And ship.UpDown >= -3 And keysPressed.Contains(Keys.A) AndAlso keysPressed.Contains(Keys.W) Then
+            ship.UpDown -= 1
+            ship.UpDown -= 1
+        End If
+        If ship.LeftRight >= -3 And ship.UpDown <= 3 And keysPressed.Contains(Keys.A) AndAlso keysPressed.Contains(Keys.S) Then
+            ship.LeftRight -= 1
+            ship.UpDown += 1
+        End If
+        If ship.LeftRight <= 3 And ship.UpDown >= -3 And keysPressed.Contains(Keys.D) AndAlso keysPressed.Contains(Keys.W) Then
+            ship.LeftRight += 1
+            ship.UpDown -= 1
+        End If
+        If ship.LeftRight <= 3 And ship.UpDown <= 3 And keysPressed.Contains(Keys.D) AndAlso keysPressed.Contains(Keys.S) Then
+            ship.LeftRight += 1
+            ship.UpDown += 1
+        End If
+
         If ship.Left <= 0 Then
             ship.Left = 0
             ship.LeftRight = -ship.LeftRight
-        ElseIf ship.Left >= Me.Width - 45 Then
-            ship.Left = Me.Width - 45
-            ship.LeftRight = -ship.LeftRight
         End If
+        If ship.Left >= Me.Width - 45 Then
+                ship.Left = Me.Width - 45
+                ship.LeftRight = -ship.LeftRight
+            End If
         If ship.Top <= 0 Then
             ship.Top = 0
             ship.UpDown = -ship.UpDown
-        ElseIf ship.Top >= Me.Height - (ship.Height * 2 + 10) Then
+        End If
+        If ship.Top >= Me.Height - (ship.Height * 2 + 10) Then
             ship.Top = Me.Height - (ship.Height * 2 + 10)
             ship.UpDown = -ship.UpDown
         End If
@@ -57,8 +68,9 @@
         If ast.Top <= 0 Then
             ast.Top = 0
             ast.UpDown = -ast.UpDown
-        ElseIf ast.Top >= Me.Height - (ship.Height * 2 + 10) Then
-            ast.Top = Me.Height - (ship.Height * 2 + 10)
+        End If
+        If ast.Top >= Me.Height - (ship.Height * 2 + 20) Then
+            ast.Top = Me.Height - (ship.Height * 2 + 20)
             ast.UpDown = -ast.UpDown
         End If
 
@@ -68,18 +80,7 @@
     End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
-        If ship.LeftRight > 0 Then
-            ship.LeftRight -= 1
-        End If
-        If ship.LeftRight < 0 Then
-            ship.LeftRight += 1
-        End If
-        If ship.UpDown > 0 Then
-            ship.UpDown -= 1
-        End If
-        If ship.UpDown < 0 Then
-            ship.UpDown += 1
-        End If
+        ship.Deceleration()
     End Sub
 
 

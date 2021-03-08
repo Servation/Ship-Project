@@ -30,4 +30,19 @@
         LeftSpeed = 0
     End Sub
 
+    Public Sub Deceleration()
+        If LeftSpeed > 0 Then
+            LeftSpeed -= 1
+        End If
+        If LeftSpeed < 0 Then
+            LeftSpeed += 1
+        End If
+        If TopSpeed > 0 Then
+            TopSpeed -= 1
+        End If
+        If TopSpeed < 0 Then
+            TopSpeed += 1
+        End If
+    End Sub
+
 End Class
