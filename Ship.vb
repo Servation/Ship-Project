@@ -24,7 +24,7 @@
         Me.BackColor = Color.Green
         Me.Width = 30
         Me.Height = 30
-        Me.Top = 370
+        Me.Top = 650
         Me.Left = 370
         TopSpeed = 0
         LeftSpeed = 0
