@@ -1,7 +1,8 @@
 ﻿Public Class Form1
     Public ship As Ship = New Ship
+    Private Gen As Random = New Random()
     Public ast(99) As Asteroid
-    Public logicalAst As Integer = 9
+    Public logicalAst As Integer = 4
     Private keysPressed As New HashSet(Of Keys)
     Private Sub form1_keydown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         keysPressed.Add(e.KeyCode)
@@ -58,10 +59,12 @@
         End If
         For i As Integer = 0 To logicalAst
             If ast(i).Top >= Height + 75 Then
+                Dim AsteroSize = Gen.Next(35, 75)
                 ast(i).Top = -75
-                ast(i).randX(Width)
-                ast(i).randSize()
-                ast(i).randSpeed()
+                ast(i).Left = Gen.Next(0, Width - ast(i).Width)
+                ast(i).Width = AsteroSize
+                ast(i).Height = AsteroSize
+                ast(i).UpDown = Gen.Next(3, 8)
             End If
             ast(i).Top += ast(i).UpDown
         Next i
@@ -77,8 +80,14 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Controls.Add(ship)
+
         For i As Integer = 0 To logicalAst
-            ast(i) = New Asteroid()
+            Dim AsteroSize = Gen.Next(35, 75)
+            ast(i) = New Asteroid
+            ast(i).Left = Gen.Next(0, Width - ast(i).Width)
+            ast(i).Width = AsteroSize
+            ast(i).Height = AsteroSize
+            ast(i).UpDown = Gen.Next(3, 8)
             Controls.Add(ast(i))
         Next i
 
