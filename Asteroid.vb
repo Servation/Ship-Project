@@ -19,7 +19,6 @@
     End Property
     Public Sub New()
         MyBase.New()
-        BackColor = Color.Black
         Top = -75
         LeftSpeed = 0
     End Sub

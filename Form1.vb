@@ -14,6 +14,7 @@
     Private Sub Timer1_Tick_1(sender As Object, e As EventArgs) Handles Timer1.Tick
         If ship.LeftRight >= -4 And keysPressed.Contains(Keys.A) Then
             ship.LeftRight -= 2
+
         End If
         If ship.LeftRight <= 4 And keysPressed.Contains(Keys.D) Then
             ship.LeftRight += 2
@@ -65,10 +66,10 @@
                 ast(i).Width = AsteroSize
                 ast(i).Height = AsteroSize
                 ast(i).UpDown = Gen.Next(3, 8)
+                ast(i).BackColor = Color.Black
             End If
             ast(i).Top += ast(i).UpDown
         Next i
-
         ship.Left += ship.LeftRight
         ship.Top += ship.UpDown
     End Sub
@@ -80,7 +81,8 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Controls.Add(ship)
-
+        Dim bmp As Bitmap = My.Resources.asteroid
+        bmp.MakeTransparent(Color.Magenta)
         For i As Integer = 0 To logicalAst
             Dim AsteroSize = Gen.Next(35, 75)
             ast(i) = New Asteroid
@@ -88,11 +90,27 @@
             ast(i).Width = AsteroSize
             ast(i).Height = AsteroSize
             ast(i).UpDown = Gen.Next(3, 8)
+            ast(i).Image = bmp
+            ast(i).SizeMode = PictureBoxSizeMode.Zoom
             Controls.Add(ast(i))
-        Next i
 
+        Next i
         Timer1.Start()
         Timer2.Start()
+        ShipG()
+    End Sub
+
+    Private Sub ShipG()
+        Dim myPen As Brush
+        Dim a As New Point(410, 600)
+        Dim a1 As New Point(390, 600)
+        Dim b As New Point(370, 640)
+        Dim c As New Point(430, 640)
+        Dim myPoint As Point() = {a, a1, b, c}
+
+        myPen = New SolidBrush(Color.Red)
+        Dim myGraphics As Graphics = CreateGraphics()
+        myGraphics.FillPolygon(myPen, myPoint)
     End Sub
 
 End Class

@@ -101,6 +101,7 @@
     <Compile Include="Ship.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Shipv2.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -124,6 +125,15 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asteroidImg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asteroid1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asteroid.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
